@@ -14,7 +14,11 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        <pspdfkit:PdfView PdfUriSource="ms-appx:///Assets/demo.pdf" PreventTextCopy="True"/>
+        
+        <!--Uncomment the line below if you want to set PreventTextCopy from XAML-->
+        <!--<pspdfkit:PdfView x:Name="PdfView" PdfUriSource="ms-appx:///Assets/demo.pdf" PreventTextCopy="True"/>-->
+
+        <pspdfkit:PdfView x:Name="PdfView" InitializationCompletedHandler="PdfViewOnInitializationCompletedHandler"/>
         <TextBox Grid.Row="1" />
     </Grid>
 </Page>

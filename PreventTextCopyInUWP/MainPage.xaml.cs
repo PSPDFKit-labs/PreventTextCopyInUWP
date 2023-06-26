@@ -1,4 +1,9 @@
 ﻿using Windows.UI.Xaml.Controls;
+using PSPDFKit.Pdf;
+using PSPDFKit.UI;
+using PSPDFKit.Document;
+using System;
+using Windows.Storage;
 
 namespace PreventTextCopyInUWP
 {
@@ -10,6 +15,17 @@ namespace PreventTextCopyInUWP
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private async void PdfViewOnInitializationCompletedHandler(PdfView sender, Document args)
+        {
+            StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/demo.pdf"));
+            DocumentSource documentSource = DocumentSource.CreateFromStorageFile(file);
+            
+            await PdfView.Controller.ShowDocumentWithViewStateAsync(documentSource, new ViewState
+            {
+                PreventTextCopy = true
+            });
         }
     }
 }
