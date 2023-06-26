@@ -6,9 +6,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:pspdfkit="using:PSPDFKit.UI"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <pspdfkit:PdfView PdfUriSource="ms-appx:///Assets/demo.pdf" PreventTextCopy="True"/>
+        <TextBox Grid.Row="1" />
     </Grid>
 </Page>
